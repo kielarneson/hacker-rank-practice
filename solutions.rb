@@ -52,3 +52,29 @@ def high_score_count(array)
 end
 
 p high_score_count(scores)
+
+# Plus Minus
+numbers = [-4, 3, -9, 0, 4, 1]
+
+def ratios(array)
+  index = 0
+  positive_count = 0
+  negative_count = 0
+  zero_count = 0
+
+  while index < array.length
+    if array[index] > 0
+      positive_count += 1
+    elsif array[index] < 0
+      negative_count += 1
+    elsif array[index] == 0
+      zero_count += 1
+    end
+    index += 1
+  end
+  p (positive_count.to_f / array.length)
+  p (negative_count.to_f / array.length).round(6)
+  p (zero_count.to_f / array.length).round(6)
+end
+
+ratios(numbers)
