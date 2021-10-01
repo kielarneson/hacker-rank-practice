@@ -78,3 +78,34 @@ def ratios(array)
 end
 
 ratios(numbers)
+
+# Mini-Max Sum
+numbers = [1, 2, 3, 4, 5]
+numbers2 = [7, 69, 2, 221, 8974]
+
+def min_and_max_sum(array)
+  except_first = array[1] + array[2] + array[3] + array[4]
+  except_second = array[0] + array[2] + array[3] + array[4]
+  except_third = array[0] + array[1] + array[3] + array[4]
+  except_fourth = array[0] + array[1] + array[2] + array[4]
+  except_fifth = array[0] + array[1] + array[2] + array[3]
+
+  all_sums = [except_first, except_second, except_third, except_fourth, except_fifth]
+
+  max_sum = all_sums[0]
+  min_sum = all_sums[0]
+
+  index = 0
+  while index < all_sums.length
+    if all_sums[index] > max_sum
+      max_sum = all_sums[index]
+    elsif all_sums[index] < min_sum
+      min_sum = all_sums[index]
+    end
+    index += 1
+  end
+  return min_sum, max_sum
+end
+
+p min_and_max_sum(numbers)
+p min_and_max_sum(numbers2)
