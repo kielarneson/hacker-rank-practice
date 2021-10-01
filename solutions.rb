@@ -109,3 +109,5 @@ end
 
 p min_and_max_sum(numbers)
 p min_and_max_sum(numbers2)
+
+# Time Conversion
