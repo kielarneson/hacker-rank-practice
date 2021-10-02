@@ -212,3 +212,36 @@ def grading_students(grades)
 end
 
 p grading_students(scores)
+
+#
+
+hike = "UDDDUDUUDDDDDUUDUDUDUDUDDDUU"
+
+def counting_valleys(path)
+  index1 = 0
+  index2 = 1
+  count = 0
+
+  while index2 < path.length
+    if path[index1] == "D" && path[index2] == "D"
+      until path[index2] == "U"
+        index2 += 1
+      end
+      count += 1
+      index1 = index2
+      index2 = index1 + 1
+    elsif path[index1] == "D" && path[index2] == "U"
+      index1 += 1
+      index2 += 1
+    elsif path[index1] == "U" && path[index2] == "D"
+      index1 += 1
+      index2 += 1
+    elsif path[index1] == "U" && path[index2] == "U"
+      index1 += 1
+      index2 += 1
+    end
+  end
+  return count
+end
+
+p counting_valleys(hike)
