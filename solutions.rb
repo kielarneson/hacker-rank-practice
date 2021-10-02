@@ -166,3 +166,24 @@ def divisibleSumPairs(n, k, ar)
 end
 
 p divisibleSumPairs(6, 3, numbers)
+
+# Lonely Number
+
+numbers = [1, 2, 3, 4, 3, 2, 1]
+
+def unique_number(a)
+  # Best solution
+  # lonely_number = a.tally.sort_by { |_k, v| v }[0][0]
+  # return lonely_number
+
+  # Also works
+  counts = Hash.new 0
+
+  a.each do |number|
+    counts[number] += 1
+  end
+
+  return counts.sort_by { |_k, v| v }[0][0]
+end
+
+p unique_number(numbers)
