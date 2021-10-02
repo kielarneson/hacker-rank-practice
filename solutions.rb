@@ -187,3 +187,28 @@ def unique_number(a)
 end
 
 p unique_number(numbers)
+
+# Grading Students
+
+scores = [73, 67, 38, 33]
+
+def grading_students(grades)
+  index = 0
+  rounded_grades = []
+
+  while index < grades.length
+    if grades[index] < 38
+      rounded_grades << grades[index]
+    elsif (grades[index] + 1) % 5 == 0
+      rounded_grades << grades[index] + 1
+    elsif (grades[index] + 2) % 5 == 0
+      rounded_grades << grades[index] + 2
+    else
+      rounded_grades << grades[index]
+    end
+    index += 1
+  end
+  return rounded_grades
+end
+
+p grading_students(scores)
