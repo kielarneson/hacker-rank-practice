@@ -245,3 +245,29 @@ def counting_valleys(path)
 end
 
 p counting_valleys(hike)
+
+# Word count
+words = [1, 2, 3, 4, 5, 4, 3, 2, 1, 9, 23, 4, 5, 12, 3, 100]
+
+word_counts = Hash.new 0
+
+words.each do |word|
+  word_counts[word] += 1
+end
+
+p word_counts
+
+#
+string = "cheesecake"
+split_string = string.split(//)
+
+# Creates a new hash with each key's initial value set to ...
+letter_count = Hash.new "a"
+
+split_string.each do |letter|
+  letter_count[letter] += "a"
+end
+
+p letter_count.sort_by { |_k, v| v }
+
+# Do Array.new and understand how that works
