@@ -271,3 +271,27 @@ end
 p letter_count.sort_by { |_k, v| v }
 
 # Do Array.new and understand how that works
+
+#
+numbers = [10, 20, 20, 10, 10, 30, 50, 10, 20]
+numbers2 = [1, 3, 5, 6, 5, 7, 8, 1, 9, 3, 4, 3, 0, 3]
+
+def count_pairs(array)
+  count = Hash.new 0
+
+  array.each do |number|
+    count[number] += 1
+  end
+
+  total = count.select { |_k, v| v >= 2 }.map { |_k, v| v }.reduce(:+)
+
+  if total % 2 == 0
+    return total / 2
+  else
+    return (total / 2.0).floor
+  end
+end
+
+p count_pairs(numbers)
+p count_pairs(numbers2)
+p count_pairs(numbers3)
