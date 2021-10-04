@@ -311,7 +311,7 @@ def camel_case(string)
   end
 end
 
-def letter_tranformation(relevant_letters)
+def split_letter_transformation(relevant_letters)
   relevant_index = []
   index = 0
   while index < relevant_letters.length
@@ -330,7 +330,7 @@ def letter_tranformation(relevant_letters)
   output = relevant_letters.join.downcase
 end
 
-p letter_tranformation(camel_case(input1))
-p letter_tranformation(camel_case(input2))
-p letter_tranformation(camel_case(input3))
-p letter_tranformation(camel_case(input4))
+p split_letter_transformation(camel_case(input1))
+p split_letter_transformation(camel_case(input2))
+p split_letter_transformation(camel_case(input3))
+p split_letter_transformation(camel_case(input4))
