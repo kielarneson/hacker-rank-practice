@@ -272,7 +272,7 @@ p letter_count.sort_by { |_k, v| v }
 
 # Do Array.new and understand how that works
 
-#
+# Sales by Match
 numbers = [10, 20, 20, 10, 10, 30, 50, 10, 20]
 numbers2 = [1, 3, 5, 6, 5, 7, 8, 1, 9, 3, 4, 3, 0, 3]
 
@@ -294,4 +294,40 @@ end
 
 p count_pairs(numbers)
 p count_pairs(numbers2)
-p count_pairs(numbers3)
+
+# Camel Case 4
+input1 = "S;M;plasticCup()"
+# input2 = "S;C;LargeSoftwareBook"
+# input3 = "S;C;MassiveCreampie"
+input4 = "S;M;plasticRedSoloCup()"
+
+def camel_case(string)
+  if string[0] == "S"
+    if string[2] == "M"
+      relevant_index = []
+      relevant_letters = string.split(//).slice(4..-3)
+
+      index = 0
+      while index < relevant_letters.length
+        if /[[:upper:]]/.match(relevant_letters[index])
+          relevant_index << index
+        end
+        index += 1
+      end
+
+      index = relevant_index.length - 1
+      relevant_index.length.times do
+        relevant_letters.insert(relevant_index[index], " ")
+        index -= 1
+      end
+
+      output = relevant_letters.join.downcase
+    end
+  end
+  return output
+end
+
+p camel_case(input1)
+# p camel_case(input2)
+# p camel_case(input3)
+p camel_case(input4)
