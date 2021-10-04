@@ -304,49 +304,33 @@ input4 = "S;M;plasticRedSoloCup()"
 def camel_case(string)
   if string[0] == "S"
     if string[2] == "M"
-      relevant_index = []
       relevant_letters = string.split(//).slice(4..-3)
-
-      index = 0
-      while index < relevant_letters.length
-        if /[[:upper:]]/.match(relevant_letters[index])
-          relevant_index << index
-        end
-        index += 1
-      end
-
-      index = relevant_index.length - 1
-      relevant_index.length.times do
-        relevant_letters.insert(relevant_index[index], " ")
-        index -= 1
-      end
-
-      output = relevant_letters.join.downcase
     elsif string[2] == "C"
-      relevant_index = []
       relevant_letters = string.split(//).slice(4..)
-
-      index = 0
-      while index < relevant_letters.length
-        if /[[:upper:]]/.match(relevant_letters[index]) && index != 0
-          relevant_index << index
-        end
-        index += 1
-      end
-
-      index = relevant_index.length - 1
-      relevant_index.length.times do
-        relevant_letters.insert(relevant_index[index], " ")
-        index -= 1
-      end
-
-      output = relevant_letters.join.downcase
     end
   end
-  return output
 end
 
-p camel_case(input1)
-p camel_case(input2)
-p camel_case(input3)
-p camel_case(input4)
+def letter_tranformation(relevant_letters)
+  relevant_index = []
+  index = 0
+  while index < relevant_letters.length
+    if /[[:upper:]]/.match(relevant_letters[index]) && index != 0
+      relevant_index << index
+    end
+    index += 1
+  end
+
+  index = relevant_index.length - 1
+  relevant_index.length.times do
+    relevant_letters.insert(relevant_index[index], " ")
+    index -= 1
+  end
+
+  output = relevant_letters.join.downcase
+end
+
+p letter_tranformation(camel_case(input1))
+p letter_tranformation(camel_case(input2))
+p letter_tranformation(camel_case(input3))
+p letter_tranformation(camel_case(input4))
