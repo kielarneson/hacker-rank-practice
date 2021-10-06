@@ -376,3 +376,18 @@ end
 p counting_sort(numbers)
 p counting_sort(numbers2)
 p counting_sort([1, 1, 1, 2, 3])
+
+# Panagrams
+string = "We promptly judged antique ivory buckles for the next prize"
+string2 = "We promptly judged antique ivory buckles for the prize"
+
+def pangram(string)
+  if string.downcase.split(//).select { |letter| letter != " " }.sort.uniq.join == "abcdefghijklmnopqrstuvwxyz"
+    return "pangram"
+  else
+    return "not pangram"
+  end
+end
+
+p pangram(string)
+p pangram(string2)
