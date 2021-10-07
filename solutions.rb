@@ -416,3 +416,35 @@ def diagonal_difference(array)
 end
 
 p diagonal_difference(numbers)
+
+# Strong Password
+password2 = "#aA3"
+
+def strong_password(string)
+  split_string = string.split("")
+  cases = { lowercase_letter: 1, uppercase_letter: 1, special_character: 1, digit: 1 }
+
+  index = 0
+  count = 0
+
+  while index < split_string.length
+    if /\d/.match(split_string[index])
+      cases.delete(:digit)
+    elsif /[a-z]/.match(split_string[index])
+      cases.delete(:lowercase_letter)
+    elsif /[A-Z]/.match(split_string[index])
+      cases.delete(:uppercase_letter)
+    elsif /\W/.match(split_string[index])
+      cases.delete(:special_character)
+    end
+    index += 1
+  end
+
+  if string.length + cases.length < 6
+    return 6 - string.length
+  else
+    return cases.length
+  end
+end
+
+strong_password(password2)
