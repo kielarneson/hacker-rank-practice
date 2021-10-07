@@ -391,3 +391,25 @@ end
 
 p pangram(string)
 p pangram(string2)
+
+# Diagonal Difference
+numbers = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [9, 8, 9],
+]
+
+def diagonal_difference(array)
+  index = 0
+  sum1 = 0
+  sum2 = 0
+
+  while index < array.length
+    sum1 += array[index][index]
+    sum2 += array[index][(array.length - 1) - index]
+    index += 1
+  end
+  return (sum1 - sum2).abs
+end
+
+p diagonal_difference(numbers)
