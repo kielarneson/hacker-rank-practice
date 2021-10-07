@@ -110,38 +110,40 @@
 # min_and_max_sum(numbers)
 
 # Time Conversion
-# time = "07:05:45PM"
-# time2 = "07:05:45AM"
-# time3 = "11:25:15AM"
-# time4 = "10:55:55PM"
-# time5 = "12:55:55AM"
-# time6 = "01:55:55PM"
-# time7 = "02:55:55AM"
+time = "05:05:45PM"
+time2 = "09:05:45PM"
+time3 = "11:05:45AM"
+time4 = "12:05:45PM"
 
-# def time_conversion(s)
-#   if s.slice(-2..-1) == "AM" && s.slice(0..1) == "12"
-#     split_string = s.split(":")
-#     converted_time = "00:#{split_string[1]}:#{split_string[2].to_i}"
-#   elsif s.slice(-2..-1) == "PM" && s.slice(0..1) == "12"
-#     split_string = s.split(":")
-#     converted_time = "12:#{split_string[1]}:#{split_string[2].to_i}"
-#   elsif s.slice(-2..-1) == "PM" && s.slice(0..1) != "12"
-#     split_string = s.split(":")
-#     converted_time = "#{split_string[0].to_i + 12}:#{split_string[1]}:#{split_string[2].to_i}"
-#   elsif s.slice(-2..-1) == "AM"
-#     split_string = s.split(":")
-#     converted_time = "#{split_string[0]}:#{split_string[1]}:#{split_string[2].to_i}"
-#   end
-#   return converted_time
-# end
+def time_conversion(string)
+  if string.slice(-2..-1) == "PM"
+    if string.slice(0..1) != "12"
+      number_to_change = string.slice(0..1)
+      numbers_to_keep = string.slice(2..7)
 
-# p time_conversion(time)
-# p time_conversion(time2)
-# p time_conversion(time3)
-# p time_conversion(time4)
-# p time_conversion(time5)
-# p time_conversion(time6)
-# p time_conversion(time7)
+      changed_number = number_to_change.to_i + 12
+      solution = changed_number.to_s + numbers_to_keep
+      return solution
+    else
+      return string.slice(0..7)
+    end
+  elsif string.slice(-2..-1) == "AM"
+    if string.slice(0..1) == "12"
+      changed_number = "00"
+      numbers_to_keep = string.slice(2..7)
+
+      solution = changed_number + numbers_to_keep
+      return solution
+    else
+      return string.slice(0..7)
+    end
+  end
+end
+
+p time_conversion(time)
+p time_conversion(time2)
+p time_conversion(time3)
+p time_conversion(time4)
 
 # Divisible Sum Pairs
 
@@ -321,7 +323,7 @@ def split_letter_transformation(relevant_letters)
   relevant_index = []
   index = 0
   while index < relevant_letters.length
-    if /[[:upper:]]/.match(relevant_letters[index]) && index != 0
+    if /[A-Z]/.match(relevant_letters[index]) && index != 0
       relevant_index << index
     end
     index += 1
@@ -382,7 +384,8 @@ string = "We promptly judged antique ivory buckles for the next prize"
 string2 = "We promptly judged antique ivory buckles for the prize"
 
 def pangram(string)
-  if string.downcase.split(//).select { |letter| letter != " " }.sort.uniq.join == "abcdefghijklmnopqrstuvwxyz"
+  if string.downcase.split(//).
+    select { |letter| letter != " " }.sort.uniq.join == "abcdefghijklmnopqrstuvwxyz"
     return "pangram"
   else
     return "not pangram"
